@@ -28,7 +28,7 @@ app.use(bodyParser.urlencoded({
     extended:false
 }));
 
-app.use("/api/admin/v4/product",productRoute);
+app.use("/api",productRoute);
 app.use("/api/order", orderRoute);
 
 app.get("/",(_req:Request,res:Response)=>{
