@@ -1,0 +1,104 @@
+import mongoose, { Schema, Document } from "mongoose";
+
+export interface Order extends Document {
+  name:string;
+  price:string;
+  productId:string;
+  quantity:string;
+  coupan?:string;
+  discount:string;
+  deliveryFee:string;
+  subTotal:string;
+  total:string;
+  firstName:string;
+  lastName:string;
+  phoneNumber:string;
+  email:string;
+  address:string;
+  apartment:string;
+  city:string;
+  state:string;
+  zipCode:string;
+  country:string;
+}
+
+const orderSchema = new Schema<Order>({
+ name:{
+  type:String,
+  required:true
+ },
+ price:{
+  type:String,
+  required:true
+ },
+ quantity:{
+    type:String,
+    required:true
+ },
+ coupan:{
+   type:String,
+   required:false
+ },
+ discount:{
+   type:String,
+   required:false,
+   default:"0"
+ },
+ deliveryFee:{
+   type:String,
+   required:false,
+   default:"Free"
+ },
+ subTotal:{
+   type:String,
+   required:false
+ },
+ total:{
+   type:String,
+   required:false
+ },
+ firstName:{
+   type:String,
+   required:true
+ },
+ lastName:{
+   type:String,
+   required:true
+ },
+ phoneNumber:{
+   type:String,
+   required:true
+ },
+ email:{
+   type:String,
+   required:true
+ },
+ address:{
+   type:String,
+   required:true
+ },
+ apartment:{
+   type:String,
+   required:true
+ },
+ city:{
+   type:String,
+   required:true
+ },
+ state:{
+   type:String,
+   required:true
+ },
+ zipCode:{
+   type:String,
+   required:true
+ },
+ country:{
+   type:String,
+   required:true
+ }
+});
+
+const OrderModel = mongoose.model<Order>("Order", orderSchema);
+
+export default OrderModel;
