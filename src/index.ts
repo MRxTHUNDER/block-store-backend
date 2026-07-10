@@ -55,7 +55,9 @@ async function seedProducts() {
 seedProducts();
 
 const corsOptions={
-    origin: process.env.NODE_ENV === 'dev'?'http://localhost:5173':'https://www.blockstore.in',
+    origin: process.env.NODE_ENV === 'dev' 
+        ? 'http://localhost:5173' 
+        : ['https://blockstore.in', 'https://www.blockstore.in'],
     methods:['GET','POST','PUT','DELETE','OPTIONS'],
     allowedHeaders: ['Content-Type', 'Authorization', 'X-VERIFY', 'X-MERCHANT-ID'],
     credentials:true
