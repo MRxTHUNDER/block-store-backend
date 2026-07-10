@@ -5,7 +5,7 @@ export interface Order extends Document {
   price:string;
   productId:string;
   quantity:string;
-  coupan?:string;
+  coupon?:string;
   discount:string;
   deliveryFee:string;
   subTotal:string;
@@ -35,7 +35,7 @@ const orderSchema = new Schema<Order>({
     type:String,
     required:true
  },
- coupan:{
+ coupon:{
    type:String,
    required:false
  },

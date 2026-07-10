@@ -5,7 +5,7 @@ export const OrderSchema = z.object({
   price: z.string().nonempty({ message: "Price is required" }), // Required
   productId: z.string().nonempty({ message: "Product ID is required" }), // Required
   quantity: z.string().nonempty({ message: "Quantity is required" }), // Required
-  coupan: z.string().optional(), // Optional
+  coupon: z.string().optional(), // Optional
   discount: z.string().default("0"), // Optional with default value
   deliveryFee: z.string().default("Free"), // Optional with default value
   subTotal: z.string().optional(), // Optional
