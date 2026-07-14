@@ -1,6 +1,7 @@
 import { Request, Response } from "express";
 import OrderModel from "../models/Order"; // Update the path to match your file structure
 import { OrderSchema } from "../zod/order";
+import { sendOrderToFormspark } from "../utils/formspark";
 
 export const createOrder = async (req: Request, res: Response) => {
   try {
@@ -32,6 +33,13 @@ export const createOrder = async (req: Request, res: Response) => {
     const newOrder = new OrderModel(validData);
     // Save the order to the database
     const savedOrder = await newOrder.save();
+
+    // Send the order to Formspark asynchronously (non-blocking for the user check-out flow)
+    try {
+      await sendOrderToFormspark(savedOrder);
+    } catch (formsparkError) {
+      console.error("Failed to forward order to Formspark:", formsparkError);
+    }
 
     // Respond with the created order
     res.status(201).json({

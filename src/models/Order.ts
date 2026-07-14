@@ -31,6 +31,10 @@ const orderSchema = new Schema<Order>({
   type:String,
   required:true
  },
+ productId:{
+  type:String,
+  required:true
+ },
  quantity:{
     type:String,
     required:true
